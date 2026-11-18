@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوة كتب كتاب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7f2; --bg2:#f8e4e6; --ink:#6b3f4a; --soft:#a07a82; --rose:#c76f80; --rose2:#e9b4bd; --card:#ffffffcc; --line:#e9c9ce;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#2a1a1f;--bg2:#3a2229;--ink:#f6dfe3;--soft:#c9a3ab;--rose:#e58b9c;--rose2:#8a4a58;--card:#3a2229cc;--line:#5a3540;color-scheme:dark;}
+}
+:root[data-theme="dark"]{--bg:#2a1a1f;--bg2:#3a2229;--ink:#f6dfe3;--soft:#c9a3ab;--rose:#e58b9c;--rose2:#8a4a58;--card:#3a2229cc;--line:#5a3540;color-scheme:dark;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(120% 80% at 50% 0%,var(--bg2),var(--bg) 60%);color:var(--ink);font-family:"Tajawal",Tahoma,sans-serif;min-height:100vh;overflow-x:hidden;text-align:center}
+.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.petals i{position:absolute;top:-30px;width:12px;height:16px;background:var(--rose2);border-radius:80% 0 80% 0;opacity:.55;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+main{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:44px 22px 56px}
+.hello{font-size:1.05rem;color:var(--soft);margin:0 0 28px;min-height:1.6em}
+.hello b{color:var(--rose);font-weight:700}
+.bismillah{font-family:"Aref Ruqaa",serif;color:var(--soft);font-size:1.15rem;margin:0 0 18px}
+.event{font-size:1.05rem;color:var(--soft);margin:0 0 10px}
+.verse{font-family:"Aref Ruqaa",serif;font-size:1.3rem;line-height:2;color:var(--ink);margin:0 0 20px}
+.names{display:flex;align-items:center;justify-content:center;gap:14px;margin:10px 0 0;direction:ltr}
+.names .ltr{width:min(34vw,140px);aspect-ratio:1;border-radius:50%;border:1.5px solid var(--rose);display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(3.4rem,18vw,5.2rem);line-height:1;color:var(--ink);background:var(--card);box-shadow:0 0 0 6px var(--bg2),0 0 0 7px var(--line)}
+.names .and{font-size:1.5rem;color:var(--rose);animation:beat 2.4s ease-in-out infinite}
+.names .ltr{cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.names .ltr.pop{animation:pop .55s ease}
+@keyframes pop{0%{transform:scale(1)}30%{transform:scale(.82) rotate(-7deg)}65%{transform:scale(1.16) rotate(6deg)}100%{transform:scale(1) rotate(0)}}
+.rise{position:fixed;font-size:1.3rem;pointer-events:none;z-index:5;transform:translate(-50%,-50%);animation:rz 1.3s ease-out forwards}
+@keyframes rz{to{transform:translate(calc(-50% + var(--x)),calc(-50% - 130px)) scale(.6);opacity:0}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.when{margin:26px 0 6px;font-size:1.2rem;font-weight:500}
+.where{margin:0 0 30px;color:var(--soft)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 32px}
+.count div{background:var(--card);border:1px solid var(--line);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.count strong{font-size:1.5rem;font-weight:700;color:var(--rose);font-variant-numeric:tabular-nums}
+.count span{font-size:.78rem;color:var(--soft)}
+.btns{display:flex;flex-direction:column;gap:12px}
+.btn{display:block;padding:15px 18px;border-radius:999px;text-decoration:none;font:500 1.05rem "Tajawal",Tahoma,sans-serif;border:1.5px solid var(--rose);color:var(--rose);background:transparent;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:3px solid var(--rose2);outline-offset:3px}
+.btn.main{background:var(--rose);color:#fff}
+.done{display:none;font-size:1.3rem;font-family:"Aref Ruqaa",serif;color:var(--rose);margin:0 0 32px}
+.foot{margin-top:34px;color:var(--soft);font-size:.95rem}
+button.btn{cursor:pointer}
+.row{display:flex;gap:10px}
+.row .btn{flex:1;padding:15px 8px}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;background:linear-gradient(100deg,transparent,var(--shine,rgba(199,111,128,.3)),transparent);transform:skewX(-20deg);animation:shine 3.6s ease-in-out infinite}
+.btn.main{--shine:rgba(255,255,255,.65)}
+#rsvp::after{animation-delay:.4s}
+#map::after{animation-delay:.8s}
+#cal::after{animation-delay:1.2s}
+@keyframes shine{0%{left:-60%}55%,100%{left:130%}}
+.btn{font-weight:700;box-shadow:0 4px 0 var(--rose2);transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--rose2)}
+.btn.main{box-shadow:0 4px 0 #a8566a}
+.btn.main:active{box-shadow:0 1px 0 #a8566a}
+#map,#cal{background:var(--card);padding-inline-end:34px}
+#map::before,#cal::before{content:"\2039";position:absolute;left:18px;top:50%;transform:translateY(-52%);font-size:1.8rem;line-height:1;color:var(--rose)}
+#rsvp{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.names .ltr.nudge{animation:ring 2s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 6px var(--bg2),0 0 0 7px var(--line),0 0 0 7px rgba(199,111,128,.5)}100%{box-shadow:0 0 0 6px var(--bg2),0 0 0 7px var(--line),0 0 0 22px rgba(199,111,128,0)}}
+.names .ltr.isname{font-size:clamp(1.7rem,8vw,2.2rem)}
+.tap{margin:16px 0 0;color:var(--rose);font-weight:700;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){#rsvp,.tap,.names .ltr.nudge{animation:none}}
+@media (prefers-reduced-motion:reduce){.btn::after{animation:none;display:none}}
+.cong{margin-top:14px;padding:20px 18px;background:var(--card);border:1px solid var(--line);border-radius:24px}
+.cong p{font-family:"Aref Ruqaa",serif;font-size:1.3rem;line-height:1.9;margin:0}
+.conf{position:fixed;top:-30px;font-size:1.5rem;pointer-events:none;z-index:5;animation:cf 2.4s ease-in forwards}
+@keyframes cf{to{transform:translate(var(--x),110vh) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.petals i,.names .and{animation:none}}
+main{transition:opacity .9s ease,transform .9s ease}
+main.hidden{opacity:0;transform:translateY(14px)}
+#intro{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(120% 80% at 50% 0%,var(--bg2),var(--bg) 70%);transition:opacity .8s ease,visibility .8s}
+#intro.gone{opacity:0;visibility:hidden}
+.envto{font-family:"Aref Ruqaa",serif;font-size:1.6rem;margin:0;color:var(--ink)}
+.hint{margin:0;color:var(--soft);font-size:1rem}
+.env{position:relative;width:min(78vw,320px);aspect-ratio:3/2;cursor:pointer;border:0;background:none;padding:0;perspective:900px;-webkit-tap-highlight-color:transparent;animation:bob 3s ease-in-out infinite}
+.env:focus-visible{outline:3px solid var(--rose2);outline-offset:6px;border-radius:10px}
+.env.open{animation:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.env .back{position:absolute;inset:0;background:var(--rose2);border-radius:10px;z-index:0}
+.env .letter{position:absolute;left:7%;right:7%;top:8%;bottom:8%;background:#fffaf6;border-radius:6px;z-index:2;transition:transform .8s ease;display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:2.2rem;color:#6b3f4a;direction:ltr}
+.env .front{position:absolute;inset:0;background:var(--rose);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);border-radius:10px;z-index:3}
+.env .flap{position:absolute;left:0;right:0;top:0;height:55%;background:#d98c9b;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease;z-index:4}
+.env .seal{position:absolute;left:50%;top:55%;width:46px;height:46px;transform:translate(-50%,-50%);border-radius:50%;background:#b85468;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 2px 6px #0003;z-index:5;transition:opacity .3s}
+.env.open .flap{transform:rotateX(180deg)}
+.env.open .seal{opacity:0}
+.env.up .flap{z-index:1}
+.env.up .letter{transform:translateY(-62%)}
+#mute{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:30;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:1.2rem;cursor:pointer;backdrop-filter:blur(4px);-webkit-tap-highlight-color:transparent}
+#mute:focus-visible{outline:3px solid var(--rose2);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.env{animation:none}}
+#fly{position:fixed;inset:0;z-index:25;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(120% 80% at 50% 0%,var(--bg2),var(--bg) 70%);transition:opacity .9s ease,visibility .9s;cursor:pointer}
+#fly.gone{opacity:0;visibility:hidden}
+#egmap{width:min(94vw,420px);height:auto;max-height:72vh;transition:transform 1.4s ease-in;transform-origin:48.6% 35.8%}
+#fly.zoom #egmap{transform:scale(4.5)}
+.land{fill:var(--rose2);fill-opacity:.55;stroke:var(--rose);stroke-width:1.2;stroke-linejoin:round}
+.nile{fill:none;stroke:var(--rose);stroke-width:1.2;opacity:.6;stroke-linecap:round}
+#route{fill:none;stroke:var(--rose);stroke-width:1;stroke-dasharray:2 4;opacity:.7}
+.dot{fill:var(--rose)}
+.ring{fill:none;stroke:var(--rose);stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center}
+#fly.landed .ring{animation:ping 1.6s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(5);opacity:0}}
+#plane path{fill:#fff;stroke:var(--rose);stroke-width:1.2;stroke-linejoin:round}
+#alex{font:700 9px "Tajawal",sans-serif;fill:var(--ink);opacity:0;transition:opacity .5s}
+#fly.landed #alex{opacity:1}
+#mail{font-size:12px;text-anchor:middle;dominant-baseline:central;opacity:0;transform-box:fill-box;transform-origin:center}
+#fly.landed #mail{opacity:1;animation:drop .6s ease-out}
+@keyframes drop{0%{transform:scale(0)}60%{transform:scale(1.5)}100%{transform:scale(1)}}
+#intro{background:linear-gradient(#fbd9cc 0%,#f4a6b0 42%,#c76f80 68%,#6b3f4a 100%)}
+#intro .envto{position:relative;z-index:1;color:#5a2f3a}
+#intro .hint{position:relative;z-index:1;color:#fff;text-shadow:0 1px 4px #0006}
+#intro .env{z-index:1}
+#intro{justify-content:flex-start;padding-top:calc(env(safe-area-inset-top,0px) + 9vh)}
+#intro .scene{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none}
+.wv1{animation:wv 9s linear infinite}
+.wv2{animation:wv 14s linear infinite reverse}
+.wv3{animation:wv 6s linear infinite}
+@keyframes wv{to{transform:translateX(-200px)}}
+.boat{animation:sail 30s linear infinite}
+@keyframes sail{from{transform:translateX(-70px)}to{transform:translateX(470px)}}
+.glow{animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:1}}
+.bgwave{position:fixed;left:0;right:0;bottom:0;width:100%;height:46px;z-index:0;pointer-events:none;opacity:.4}
+.bgwave path{fill:var(--rose2);animation:wv 10s linear infinite}
+@media (prefers-reduced-motion:reduce){.wv1,.wv2,.wv3,.boat,.glow,.bgwave path{animation:none}}
+</style>
+</head>
+<body>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div id="fly">
+  <svg id="egmap" viewBox="-45 -100 340 345" role="img" aria-label="خريطة مصر">
+    <polygon class="land" points="12.4,15.3 32.2,14.2 61.7,20.1 99.3,31.5 120.2,23.4 131.2,17.5 144.4,14.6 162,16.8 173,21.9 215.9,21.2 230.2,60.8 215.9,99.3 203.8,89.4 190.6,74 185,58.6 178.5,50.9 172,58.6 177,72.9 190.6,86.1 206,110.3 209.3,121.3 217,135.6 230.2,158.7 243.4,184 274.2,225.8 12.4,225.8"/>
+    <path class="nile" d="M186,180 C185,150 178,120 168,100 C160,85 152,70 150,50 L131,20 M150,50 L162,17"/>
+    <path id="route" d="M-40,-85 C20,-100 60,-30 120.2,23.4"/>
+    <circle class="ring" cx="120.2" cy="23.4" r="3"/>
+    <circle class="dot" cx="120.2" cy="23.4" r="2.5"/>
+    <text id="alex" x="120" y="11" text-anchor="middle">الإسكندرية</text>
+    <text id="mail" x="120.2" y="24">&#128140;</text>
+    <g id="plane" transform="translate(-40,-85) rotate(25)"><path d="M-9,-5 L10,0 L-9,5 L-5,0Z"/></g>
+  </svg>
+  <p class="hint" id="flyHint">المس الشاشة لتبدأ الرحلة &#9992;&#65039;</p>
+</div>
+<div id="intro">
+  <svg class="scene" viewBox="0 0 400 440" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><linearGradient id="seag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e58b9c"/><stop offset="1" stop-color="#5a2f3a"/></linearGradient></defs>
+    <circle cx="300" cy="200" r="68" fill="#ffe6cf"/>
+    <rect x="0" y="200" width="400" height="240" fill="url(#seag)"/>
+    <path d="M255,212h60M265,222h40M272,232h26M278,242h14" stroke="#ffe6cf" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    <g class="boat"><g transform="translate(0,196) scale(1.7)"><path d="M0,0 L44,0 L36,11 L8,11Z" fill="#4a2a33"/><path d="M22,-3 V-44" stroke="#4a2a33" stroke-width="1.6"/><path d="M24,-5 L24,-42 L44,-5Z" fill="#fff5ee"/><path d="M20,-5 L20,-30 L6,-5Z" fill="#ffe6cf"/></g></g>
+    <g transform="translate(0,200) scale(1.3) translate(0,-200)"><g fill="#5a2f3a">
+      <path d="M0,200 L0,176 L172,176 L190,200Z"/>
+      <rect x="14" y="150" width="30" height="30"/>
+      <rect x="140" y="150" width="30" height="30"/>
+      <rect x="54" y="140" width="76" height="40"/>
+      <rect x="76" y="108" width="32" height="34"/>
+      <rect x="86" y="92" width="12" height="18"/>
+      <path d="M14,150v-6h6v6zM26,150v-6h6v6zM38,150v-6h6v6zM140,150v-6h6v6zM152,150v-6h6v6zM164,150v-6h6v6zM54,140v-6h8v6zM72,140v-6h8v6zM100,140v-6h8v6zM118,140v-6h8v6z"/>
+    </g>
+    <circle class="glow" cx="92" cy="86" r="9" fill="#ffd9a0"/></g>
+    <g class="wv1" opacity=".5"><path d="M-200,300 Q-150,288 -100,300 T0,300 T100,300 T200,300 T300,300 T400,300 T500,300 T600,300 V440 H-200Z" fill="#c76f80"/></g>
+    <g class="wv2" opacity=".45"><path d="M-200,330 Q-150,318 -100,330 T0,330 T100,330 T200,330 T300,330 T400,330 T500,330 T600,330 V440 H-200Z" fill="#e58b9c"/></g>
+    <g class="wv3" opacity=".6"><path d="M-200,365 Q-150,353 -100,365 T0,365 T100,365 T200,365 T300,365 T400,365 T500,365 T600,365 V440 H-200Z" fill="#5a2f3a"/></g>
+  </svg>
+  <p class="envto" id="envTo"></p>
+  <button class="env" id="env" type="button" aria-label="افتح الدعوة">
+    <span class="back"></span>
+    <span class="letter">A &#9829; M</span>
+    <span class="front"></span>
+    <span class="flap"></span>
+    <span class="seal">&#129293;</span>
+  </button>
+  <p class="hint">المس الظرف لفتحه &#129293;</p>
+</div>
+<svg class="bgwave" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path d="M-200,20 Q-150,6 -100,20 T0,20 T100,20 T200,20 T300,20 T400,20 T500,20 T600,20 V46 H-200Z"/></svg>
+<button id="mute" type="button" aria-label="الموسيقى" hidden>🔊</button>
+<main id="main" class="hidden">
+  <p class="hello" id="hello"></p>
+  <p class="bismillah">بسم الله الرحمن الرحيم</p>
+  <p class="verse">﴿ ومن آياته أن خلق لكم من أنفسكم أزواجًا لتسكنوا إليها وجعل بينكم مودة ورحمة ﴾</p>
+  <p class="event">يسعدنا ويشرفنا حضوركم لمشاركتنا فرحة كتب الكتاب</p>
+  <h1 class="names"><span class="ltr" id="groom"></span><span class="and">♥</span><span class="ltr" id="bride"></span></h1>
+  <p class="when" id="when"></p>
+  <p class="where" id="where"></p>
+  <div class="count" id="count">
+    <div><strong id="d">0</strong><span>يوم</span></div>
+    <div><strong id="h">0</strong><span>ساعة</span></div>
+    <div><strong id="m">0</strong><span>دقيقة</span></div>
+    <div><strong id="s">0</strong><span>ثانية</span></div>
+  </div>
+  <p class="done" id="done">النهارده يومنا، تعالوا افرحوا معانا</p>
+  <div class="btns">
+    <div class="row">
+      <button class="btn" id="congBtn" type="button">🎉 مبروك</button>
+      <a class="btn main" id="rsvp" target="_blank" rel="noopener">💬 هحضر</a>
+    </div>
+    <div class="cong" id="cong" hidden>
+      <p>الله يبارك لكم ويبارك عليكم ويجمع بينكم في خير 🤍</p>
+    </div>
+    <a class="btn" id="map" target="_blank" rel="noopener">📍 الموقع على الخريطة</a>
+    <a class="btn" id="cal" target="_blank" rel="noopener">📅 أضف للتقويم</a>
+  </div>
+  <p class="foot" id="foot"></p>
+</main>
+<script>
+/* ===== عدّل هنا بس ===== */
+var CONFIG = {
+  groom: "A",
+  groomName: "Ahmed",
+  bride: "M",
+  brideName: "Mai",
+  date: "2027-03-12T15:30:00+02:00",   // التاريخ والوقت (بتوقيت مصر +02:00)
+  dateText: "الجمعة ١٢ مارس ٢٠٢٧ - ثالث أيام عيد الفطر، بعد صلاة العصر",
+  place: "مسجد المرسي أبو العباس، الإسكندرية",
+  mapUrl: "https://maps.app.goo.gl/RgHAsbneiWmxGVkq9?g_st=ic",
+  whatsapp: "4917663179184",             // رقم واتساب بالكود الدولي من غير +
+  footer: "فرحتنا مش هتكمل غير بوجودكم 🤍",
+  guestWord: "أهلاً يا"
+};
+/* ======================== */
+
+function $(id){return document.getElementById(id)}
+$("groom").textContent = CONFIG.groom;
+$("bride").textContent = CONFIG.bride;
+$("when").textContent = "🌙 " + CONFIG.dateText;
+$("where").textContent = "🕌 " + CONFIG.place;
+$("foot").textContent = CONFIG.footer;
+$("map").href = CONFIG.mapUrl;
+
+/* اسم الضيف من اللينك: الصفحة#أحمد */
+function guestName(){
+  var h = location.hash.replace(/^#/, "");
+  try { h = decodeURIComponent(h); } catch(e) {}
+  return h.replace(/[-_+]/g, " ").trim();
+}
+function showGuest(){
+  var g = guestName(), el = $("hello");
+  el.textContent = "";
+  if (g) {
+    el.appendChild(document.createTextNode(CONFIG.guestWord + " "));
+    var b = document.createElement("b"); b.textContent = g; el.appendChild(b);
+    el.appendChild(document.createTextNode(" 🤍"));
+  } else { el.textContent = "أهلاً بيكم 🤍"; }
+  var msg = (g ? "أنا " + g + "، " : "") + "هحضر كتب كتاب " + CONFIG.groom + " و " + CONFIG.bride + " إن شاء الله، ومبروك من قلبي 🎉🤍";
+  $("rsvp").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
+}
+showGuest();
+window.addEventListener("hashchange", showGuest);
+
+/* رابط التقويم */
+(function(){
+  var start = new Date(CONFIG.date), end = new Date(start.getTime() + 3*3600*1000);
+  function f(d){ return d.toISOString().replace(/[-:]|\.\d{3}/g, ""); }
+  $("cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
+    encodeURIComponent("كتب كتاب " + CONFIG.groom + " و" + CONFIG.bride) +
+    "&dates=" + f(start) + "/" + f(end) + "&location=" + encodeURIComponent(CONFIG.place);
+})();
+
+/* العدّاد التنازلي */
+var target = new Date(CONFIG.date).getTime();
+function tick(){
+  var diff = target - Date.now();
+  if (diff <= 0) { $("count").style.display = "none"; $("done").style.display = "block"; return; }
+  var s = Math.floor(diff/1000);
+  $("d").textContent = Math.floor(s/86400);
+  $("h").textContent = Math.floor(s%86400/3600);
+  $("m").textContent = Math.floor(s%3600/60);
+  $("s").textContent = s%60;
+}
+tick(); setInterval(tick, 1000);
+
+/* لعب بالحروف */
+(function(){
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tapped = {}, seen = {};
+  function hearts(x, y, n){
+    if (reduce) return;
+    var em = ["🤍", "💗", "✨", "🌸"];
+    for (var i = 0; i < n; i++) {
+      var h = document.createElement("span");
+      h.className = "rise";
+      h.textContent = em[i % em.length];
+      h.style.left = (x + (Math.random()*60 - 30)) + "px";
+      h.style.top = y + "px";
+      h.style.setProperty("--x", (Math.random()*80 - 40) + "px");
+      h.style.animationDelay = (Math.random()*0.25) + "s";
+      document.body.appendChild(h);
+      setTimeout((function(el){ return function(){ el.remove(); }; })(h), 1800);
+    }
+  }
+  ["groom", "bride"].forEach(function(id){
+    var el = $(id);
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.classList.add("nudge");
+    function go(){
+      var r = el.getBoundingClientRect();
+      if (!reduce) { el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop"); }
+      hearts(r.left + r.width/2, r.top + r.height/2, 6);
+      tapped[id] = true;
+      var isName = el.classList.toggle("isname");
+      el.textContent = isName ? (id === "groom" ? CONFIG.groomName : CONFIG.brideName) : (id === "groom" ? CONFIG.groom : CONFIG.bride);
+      el.classList.remove("nudge");
+      seen[id] = true;
+      if (seen.groom && seen.bride) { var th = $("tapHint"); if (th) th.style.display = "none"; }
+      if (tapped.groom && tapped.bride) {
+        tapped = {};
+        var a = document.querySelector(".names .and").getBoundingClientRect();
+        hearts(a.left + a.width/2, a.top + a.height/2, 18);
+      }
+    }
+    el.addEventListener("click", go);
+    el.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+})();
+
+/* مبروك */
+$("congBtn").addEventListener("click", function(){
+  var g = guestName();
+  var msg = (g ? "من " + g + ": " : "") + "مبروك يا " + CONFIG.groom + " و " + CONFIG.bride + "، الله يبارك لكم ويبارك عليكم ويجمع بينكم في خير 🤍🎉";
+  
+  $("cong").hidden = false;
+  $("cong").scrollIntoView({behavior: "smooth", block: "center"});
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var em = ["🎉", "🤍", "🌸", "✨", "💐"];
+  for (var i = 0; i < 26; i++) {
+    var c = document.createElement("span");
+    c.className = "conf";
+    c.textContent = em[i % em.length];
+    c.style.left = Math.random()*100 + "%";
+    c.style.setProperty("--x", (Math.random()*80 - 40) + "px");
+    c.style.setProperty("--r", (Math.random()*540 - 270) + "deg");
+    c.style.animationDelay = (Math.random()*0.6) + "s";
+    document.body.appendChild(c);
+    setTimeout((function(n){ return function(){ n.remove(); }; })(c), 3400);
+  }
+});
+
+/* موسيقى هادية بتتولد بالكود */
+var Music = (function(){
+  var ctx, master, bus, timer, nextT = 0, step = 0, on = false, started = false;
+  var btn = $("mute");
+  var EIGHTH = 60 / 74 / 2;
+  var chords = [[48,52,55],[45,48,52],[41,45,48],[43,47,50]];
+  var pat = [0,1,2,3,2,1,2,4];
+  var mel = [[76,79],[81,79],[77,81],[79,74],[84,79],[76,81],[77,72],[74,79]];
+  function hz(m){ return 440 * Math.pow(2, (m - 69) / 12); }
+  function note(m, t, dur, vol, type){
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = hz(m);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(bus);
+    o.start(t); o.stop(t + dur + 0.05);
+  }
+  function schedule(){
+    while (nextT < ctx.currentTime + 0.6) {
+      var bar = Math.floor(step / 8) % 8, i = step % 8, c = chords[bar % 4];
+      var pool = [c[0], c[1]+12, c[2]+12, c[0]+24, c[1]+24];
+      note(pool[pat[i]], nextT, 1.4, 0.12, "triangle");
+      if (i === 0) note(c[0], nextT, 3, 0.16, "sine");
+      if (i === 0 || i === 4) note(mel[bar][i / 4], nextT, 2.2, 0.12, "sine");
+      nextT += EIGHTH; step++;
+    }
+  }
+  function start(){
+    if (started) return;
+    started = true;
+    try {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain();
+      master.gain.setValueAtTime(0, ctx.currentTime);
+      master.connect(ctx.destination);
+      var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600;
+      bus = ctx.createGain(); bus.connect(lp); lp.connect(master);
+      var d = ctx.createDelay(); d.delayTime.value = 0.42;
+      var fb = ctx.createGain(); fb.gain.value = 0.32;
+      lp.connect(d); d.connect(fb); fb.connect(d); d.connect(master);
+      ctx.resume();
+      nextT = ctx.currentTime + 0.2;
+      master.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 2.5);
+      timer = setInterval(schedule, 150);
+      on = true; btn.hidden = false; btn.textContent = "🔊";
+    } catch (e) { started = false; }
+  }
+  function toggle(){
+    if (!ctx) return;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    if (on) {
+      on = false;
+      master.gain.setTargetAtTime(0, ctx.currentTime, 0.15);
+      setTimeout(function(){ if (!on) ctx.suspend(); }, 600);
+      btn.textContent = "🔇";
+    } else {
+      on = true; ctx.resume();
+      master.gain.setTargetAtTime(0.5, ctx.currentTime, 0.3);
+      btn.textContent = "🔊";
+    }
+  }
+  btn.addEventListener("click", toggle);
+  document.addEventListener("visibilitychange", function(){
+    if (!ctx || !on) return;
+    if (document.hidden) ctx.suspend(); else ctx.resume();
+  });
+  return { start: start };
+})();
+
+/* الظرف */
+(function(){
+  var intro = $("intro"), env = $("env"), main = $("main"), opened = false;
+  function envName(){
+    var g = guestName();
+    $("envTo").textContent = g ? "إلى: " + g : "دعوة خاصة";
+  }
+  envName();
+  window.addEventListener("hashchange", envName);
+  env.addEventListener("click", function(){
+    if (opened) return;
+    opened = true;
+    env.classList.add("open");
+    Music.start();
+    setTimeout(function(){ env.classList.add("up"); }, 350);
+    setTimeout(function(){ intro.classList.add("gone"); main.classList.remove("hidden"); }, 1500);
+    setTimeout(function(){ intro.style.display = "none"; }, 2500);
+  });
+})();
+
+/* رحلة الطيارة */
+(function(){
+  var fly = $("fly"), route = $("route"), plane = $("plane"), started = false;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function finish(){
+    fly.classList.add("zoom");
+    setTimeout(function(){ fly.classList.add("gone"); }, 1100);
+    setTimeout(function(){ fly.style.display = "none"; }, 2400);
+  }
+  function go(){
+    if (started) return;
+    started = true;
+    $("flyHint").style.visibility = "hidden";
+    Music.start();
+    if (reduce) { plane.style.display = "none"; fly.classList.add("landed"); setTimeout(finish, 600); return; }
+    var L = route.getTotalLength(), dur = 3600, t0 = null;
+    function ease(x){ return x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x + 2, 2) / 2; }
+    function frame(ts){
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / dur, 1), d = ease(k) * L;
+      var p = route.getPointAtLength(d), q = route.getPointAtLength(Math.min(d + 1, L));
+      var ang = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI;
+      plane.setAttribute("transform", "translate(" + p.x + "," + p.y + ") rotate(" + ang + ") scale(" + (1.3 - 0.5*k) + ")");
+      if (k < 1) { requestAnimationFrame(frame); }
+      else { plane.style.display = "none"; fly.classList.add("landed"); setTimeout(finish, 1300); }
+    }
+    requestAnimationFrame(frame);
+  }
+  fly.addEventListener("click", go);
+})();
+
+/* بتلات بتنزل بهدوء */
+(function(){
+  var box = $("petals");
+  for (var i = 0; i < 14; i++) {
+    var p = document.createElement("i");
+    p.style.left = Math.random()*100 + "%";
+    p.style.animationDuration = (9 + Math.random()*9) + "s";
+    p.style.animationDelay = (-Math.random()*14) + "s";
+    p.style.transform = "scale(" + (0.7 + Math.random()*0.9) + ")";
+    box.appendChild(p);
+  }
+})();
+</script>
+</body>
+</html>
